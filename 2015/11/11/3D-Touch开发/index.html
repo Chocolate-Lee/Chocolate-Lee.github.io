@@ -13,9 +13,9 @@
 <meta property="og:site_name" content="Mind Palace">
 <meta property="og:description" content="一、Home Screen Quick Actions第一，你得有个6s手机！如果没有，也可以！。根据此链接教程，在模拟器上开发
 1.添加静态标签：在info.plist中添加数组字段：UIApplicationShortcutItems。（其中每个item都是一个标签，将item设置为字典属性。）">
-<meta property="og:image" content="http://yoursite.com/chocolate/blogimgs/3DTouch/plist.png">
-<meta property="og:image" content="http://yoursite.com/chocolate/blogimgs/3DTouch/label.jpg">
-<meta property="og:updated_time" content="2015-11-11T09:57:26.000Z">
+<meta property="og:image" content="http://7xo8zb.com1.z0.glb.clouddn.com/plist.png">
+<meta property="og:image" content="http://7xo8zb.com1.z0.glb.clouddn.com/label.jpg">
+<meta property="og:updated_time" content="2015-11-11T17:18:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="3D Touch开发">
 <meta name="twitter:description" content="一、Home Screen Quick Actions第一，你得有个6s手机！如果没有，也可以！。根据此链接教程，在模拟器上开发
@@ -245,7 +245,7 @@
 <p>1.添加静态标签：在info.plist中添加数组字段：UIApplicationShortcutItems。（其中每个item都是一个标签，将item设置为字典属性。）</p>
 <a id="more"></a>
 <p>2.为每个item设置属性：<br>a).必设<br>UIApplicationShortcutItemType 标签的标识，用来区分点击的标签。<br>UIApplicationShortcutItemTitle 为标签设置标题<br>b).可选<br>UIApplicationShortcutItemSubtitle 为标签设置副标题<br>UIApplicationShortcutItemIconType 设置标签Icon类型<br>UIApplicationShortcutItemIconFile 设置标签Icon图片<br>UIApplicationShortcutItemUserInfo 设置标签信息字典</p>
-<p><img src="/chocolate/blogimgs/3DTouch/plist.png"><br><br><br><br><br><img src="/chocolate/blogimgs/3DTouch/label.jpg"></p>
+<p><img src="http://7xo8zb.com1.z0.glb.clouddn.com/plist.png"><br><br><br><br><br><img src="http://7xo8zb.com1.z0.glb.clouddn.com/label.jpg"></p>
 <p>3.动态添加标签</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">UIMutableApplicationShortcutItem</span> *codeItem = [[<span class="built_in">UIMutableApplicationShortcutItem</span> alloc] initWithType:k3DTouch_OrderCode_Type localizedTitle:[<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"收货码：%@"</span>, [<span class="keyword">self</span><span class="variable">.viewModel</span> achiveLastestCode]]];</span><br><span class="line">      codeItem<span class="variable">.localizedSubtitle</span> = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%@，消费%.2f元"</span>, [<span class="keyword">self</span><span class="variable">.viewModel</span> achiveShopName], [<span class="keyword">self</span><span class="variable">.viewModel</span> achivePrice] / <span class="number">100.</span>];</span><br><span class="line">      </span><br><span class="line"><span class="built_in">NSArray</span> *addArr = @[codeItem];</span><br><span class="line">[<span class="built_in">UIApplication</span> sharedApplication]<span class="variable">.shortcutItems</span> = addArr;</span><br></pre></td></tr></table></figure>
 <p>4.处理点击事件<br>a).启动程序</p>
