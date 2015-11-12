@@ -214,28 +214,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="一、搭建一个hexo博客">一、搭建一个hexo博客</h3><p><a href="http://lc.chaoxiaohuihui.com/2015/08/19/hexo-%E6%95%99%E7%A8%8B/" target="_blank" rel="external">可按本站内教程进行搭建</a></p>
+        <h3 id="一、搭建一个hexo博客">一、搭建一个hexo博客</h3><p><a href="http://lc.chaoxiaohuihui.com/2015/08/19/hexo-%E6%95%99%E7%A8%8B/">可按本站内教程进行搭建</a></p>
 <h3 id="二、在github上创建仓库">二、在github上创建仓库</h3><p>首先注册一个github账号，注册时填写的username要谨慎</p>
-<p>1.创建一个Repository，名称规则为：</p>
-<table><br>    <tr><br>        <td>username.github.io</td><br>    </tr><br></table>
-
-
-<p>2.编辑hexo/config.yml文件如下：</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attribute">deploy</span>:</span><br><span class="line">  <span class="attribute">type</span>: git</span><br><span class="line">  <span class="attribute">repository</span>: <span class="attribute">https</span>:<span class="comment">//github.com/Chocolate-Lee/Chocolate-Lee.github.io.git</span></span><br><span class="line">  <span class="attribute">branch</span>: master</span><br></pre></td></tr></table></figure>
-<p>其中repository的地址就是你刚刚创建的仓库的https地址。</p>
-<h3 id="三、为github设置SSH_Keys">三、为github设置SSH Keys</h3><p>1.检查极其上是否已经存在id_rsa.pub文件</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ls</span> -<span class="keyword">al</span> ~/.ssh</span><br></pre></td></tr></table></figure>
-<p>2.不存在的话使其生成</p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -<span class="keyword">C</span> <span class="string">"xxxxxx@xxx.com"</span></span><br></pre></td></tr></table></figure>
-<p>一路回车即可。</p>
-<p>3.赋值id_rsa.pub文件内容，在github的settings中，点选SSH keys，添加一个key，将内容粘贴进去。</p>
-<p>4.测试是否添加成功，在刚刚的机器上输入</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">ssh</span> -T git<span class="variable">@github</span>.com</span><br></pre></td></tr></table></figure>
-<h3 id="四、部署到github上">四、部署到github上</h3><p>1.在hexo中分别进行生成，发布：</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">g</span></span><br><span class="line">hexo <span class="literal">d</span></span><br></pre></td></tr></table></figure>
-<p>2.部署成功后，可通过 <a href="http://chocolate-lee.github.io" target="_blank" rel="external">http://chocolate-lee.github.io</a> 进行访问，其中将chocolate-lle替换为你自己的username即可</p>
-<h3 id="五、配置自己的域名">五、配置自己的域名</h3><p>1.准备一个自己的域名<br>2.解析一个二级域名，可采用A记录或者CNAME记录，A记录就是将二级域名指向github上的ip，我使用的是CNAME。<br>3.将自己的二级域名指向chocolate-lee.github.io<br>4.创建文件hexo/source/CNAME<br>5.编辑CNAME文件内容为：lc.chaoxiaohuihui.com<br>6.发布，即可，其中内容替换为自己的。</p>
-
+<p>1.创建一个Repository，名称规则为：<br>
       
     </div>
     
@@ -252,6 +233,10 @@
 	</div>
 
 
+      
+        <p class="article-more-link">
+          <a  href="/2015/11/12/hexo博客部署到github/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
