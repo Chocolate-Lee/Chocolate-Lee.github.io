@@ -3,19 +3,39 @@
 <head>
   <meta charset="utf-8">
   
-  <title>java开发问题总结 | Mind Palace</title>
+  <title>hexo博客部署到github | Mind Palace</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、自动补全功能在Preferences -&amp;gt; Java -&amp;gt; Editor -&amp;gt; Content Assist 的Auto activation triggers中  输入a-z，A-Z 并应用。">
+  <meta name="description" content="一、搭建一个hexo博客可按本站内教程进行搭建
+二、在github上创建仓库首先注册一个github账号，注册时填写的username要谨慎
+1.创建一个Repository，名称规则为：
+            username.github.io    
+
+
+2.编辑hexo/config.yml文件如下：
+12345deploy:  type: git  repository: https:">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java开发问题总结">
-<meta property="og:url" content="http://yoursite.com/2015/09/21/java开发问题总结/index.html">
+<meta property="og:title" content="hexo博客部署到github">
+<meta property="og:url" content="http://yoursite.com/2015/11/12/hexo博客部署到github/index.html">
 <meta property="og:site_name" content="Mind Palace">
-<meta property="og:description" content="一、自动补全功能在Preferences -&amp;gt; Java -&amp;gt; Editor -&amp;gt; Content Assist 的Auto activation triggers中  输入a-z，A-Z 并应用。">
-<meta property="og:image" content="http://yoursite.com/chocolate/blogimgs/eclipse配置/eclipse_autotrigger.png">
-<meta property="og:updated_time" content="2015-09-21T13:09:29.000Z">
+<meta property="og:description" content="一、搭建一个hexo博客可按本站内教程进行搭建
+二、在github上创建仓库首先注册一个github账号，注册时填写的username要谨慎
+1.创建一个Repository，名称规则为：
+            username.github.io    
+
+
+2.编辑hexo/config.yml文件如下：
+12345deploy:  type: git  repository: https:">
+<meta property="og:updated_time" content="2015-11-12T01:49:05.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java开发问题总结">
-<meta name="twitter:description" content="一、自动补全功能在Preferences -&amp;gt; Java -&amp;gt; Editor -&amp;gt; Content Assist 的Auto activation triggers中  输入a-z，A-Z 并应用。">
+<meta name="twitter:title" content="hexo博客部署到github">
+<meta name="twitter:description" content="一、搭建一个hexo博客可按本站内教程进行搭建
+二、在github上创建仓库首先注册一个github账号，注册时填写的username要谨慎
+1.创建一个Repository，名称规则为：
+            username.github.io    
+
+
+2.编辑hexo/config.yml文件如下：
+12345deploy:  type: git  repository: https:">
   
     <link rel="alternative" href="/atom.xml" title="Mind Palace" type="application/atom+xml">
   
@@ -188,11 +208,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-java开发问题总结" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-hexo博客部署到github" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/09/21/java开发问题总结/" class="article-date">
-  	<time datetime="2015-09-21T07:19:42.000Z" itemprop="datePublished">2015-09-21</time>
+      <a href="/2015/11/12/hexo博客部署到github/" class="article-date">
+  	<time datetime="2015-11-12T01:26:39.000Z" itemprop="datePublished">2015-11-12</time>
 </a>
     </div>
   
@@ -205,7 +225,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      java开发问题总结
+      hexo博客部署到github
     </h1>
   
 
@@ -214,12 +234,12 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/eclipse/">eclipse</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blog/">Blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li></ul>
 	</div>
 
         
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/eclipse/">eclipse</a>
+	<a class="article-category-link" href="/categories/Hexo/">Hexo</a>
 	</div>
 
 
@@ -229,12 +249,27 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="一、自动补全功能">一、自动补全功能</h3><p>在Preferences -&gt; Java -&gt; Editor -&gt; Content Assist 的Auto activation triggers中  输入a-z，A-Z 并应用。</p>
-<a id="more"></a>
-<p><img src="/chocolate/blogimgs/eclipse配置/eclipse_autotrigger.png"><br><br></p>
-<h3 id="二、resources源文件重复">二、resources源文件重复</h3><p>maven update project时提示类似：cannot nest ‘’. to enable the nesting exclude</p>
-<p>右键工程Properties -&gt; Java Build Path 选中Source，找到重复的包remove掉。我的是java文件夹作为source，又再下面创建了一个resources作为source，把resources改回包的形式就好了。</p>
-<h3 id="三、使用Run_as_Maven_build时提示：-Dmaven-multiModuleProjectDirectory_system_propery_is_not_set-_Check_$M2_HOME_environment_variable_and_mvn_script_match-">三、使用Run as Maven build时提示：-Dmaven.multiModuleProjectDirectory system propery is not set. Check $M2_HOME environment variable and mvn script match.</h3><p>Preference-&gt;Java-&gt;Installed JREs-&gt;Edit<br>在Default VM arguments中设置<br>-Dmaven.multiModuleProjectDirectory=$M2_HOME</p>
+        <h3 id="一、搭建一个hexo博客">一、搭建一个hexo博客</h3><p><a href="http://lc.chaoxiaohuihui.com/2015/08/19/hexo-%E6%95%99%E7%A8%8B/" target="_blank" rel="external">可按本站内教程进行搭建</a></p>
+<h3 id="二、在github上创建仓库">二、在github上创建仓库</h3><p>首先注册一个github账号，注册时填写的username要谨慎</p>
+<p>1.创建一个Repository，名称规则为：</p>
+<table><br>    <tr><br>        <td>username.github.io</td><br>    </tr><br></table>
+
+
+<p>2.编辑hexo/config.yml文件如下：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attribute">deploy</span>:</span><br><span class="line">  <span class="attribute">type</span>: git</span><br><span class="line">  <span class="attribute">repository</span>: <span class="attribute">https</span>:<span class="comment">//github.com/Chocolate-Lee/Chocolate-Lee.github.io.git</span></span><br><span class="line">  <span class="attribute">branch</span>: master</span><br></pre></td></tr></table></figure>
+<p>其中repository的地址就是你刚刚创建的仓库的https地址。</p>
+<h3 id="三、为github设置SSH_Keys">三、为github设置SSH Keys</h3><p>1.检查极其上是否已经存在id_rsa.pub文件</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ls</span> -<span class="keyword">al</span> ~/.ssh</span><br></pre></td></tr></table></figure>
+<p>2.不存在的话使其生成</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -<span class="keyword">C</span> <span class="string">"xxxxxx@xxx.com"</span></span><br></pre></td></tr></table></figure>
+<p>一路回车即可。</p>
+<p>3.赋值id_rsa.pub文件内容，在github的settings中，点选SSH keys，添加一个key，将内容粘贴进去。</p>
+<p>4.测试是否添加成功，在刚刚的机器上输入</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">ssh</span> -T git<span class="variable">@github</span>.com</span><br></pre></td></tr></table></figure>
+<h3 id="四、部署到github上">四、部署到github上</h3><p>1.在hexo中分别进行生成，发布：</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">g</span></span><br><span class="line">hexo <span class="literal">d</span></span><br></pre></td></tr></table></figure>
+<p>2.部署成功后，可通过 <a href="http://chocolate-lee.github.io" target="_blank" rel="external">http://chocolate-lee.github.io</a> 进行访问，其中将chocolate-lle替换为你自己的username即可</p>
+<h3 id="五、配置自己的域名">五、配置自己的域名</h3><p>1.准备一个自己的域名<br>2.解析一个二级域名，可采用A记录或者CNAME记录，A记录就是将二级域名指向github上的ip，我使用的是CNAME。<br>3.将自己的二级域名指向chocolate-lee.github.io<br>4.创建文件hexo/source/CNAME<br>5.编辑CNAME文件内容为：lc.chaoxiaohuihui.com<br>6.发布，即可，其中内容替换为自己的。</p>
 
       
     </div>
@@ -244,18 +279,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/10/19/iOS-9-无法加载图片的问题/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          iOS 9 无法加载图片的问题
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/09/21/SpringMVC（一）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">SpringMVC（一）</div>
+    <a href="/2015/11/11/3D-Touch开发/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">3D Touch开发</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -284,7 +310,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="java开发问题总结" data-title="java开发问题总结" data-url="http://yoursite.com/2015/09/21/java开发问题总结/"></div>
+	<div class="ds-thread" data-thread-key="hexo博客部署到github" data-title="hexo博客部署到github" data-url="http://yoursite.com/2015/11/12/hexo博客部署到github/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
