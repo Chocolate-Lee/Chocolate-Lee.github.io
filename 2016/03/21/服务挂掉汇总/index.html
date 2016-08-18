@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>服务挂掉汇总 | Mind Palace</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="broken pipe事件一、2015-07-26
+1.事件：订单量突然达到1000+。2.异常：tomcat不断抛出broken pipe的异常。3.疑因：a) tomcat最大连接数b) tomcat超时设置c) java项目mysql最大连接池数太小d) mysql最大连接数太小e) 访问量开始增加f) 首页接口/订单列表接口等，回传json串太长(13151字符)4.处理：a) /mnt/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="服务挂掉汇总">
+<meta property="og:url" content="http://yoursite.com/2016/03/21/服务挂掉汇总/index.html">
+<meta property="og:site_name" content="Mind Palace">
+<meta property="og:description" content="broken pipe事件一、2015-07-26
+1.事件：订单量突然达到1000+。2.异常：tomcat不断抛出broken pipe的异常。3.疑因：a) tomcat最大连接数b) tomcat超时设置c) java项目mysql最大连接池数太小d) mysql最大连接数太小e) 访问量开始增加f) 首页接口/订单列表接口等，回传json串太长(13151字符)4.处理：a) /mnt/">
+<meta property="og:updated_time" content="2016-03-21T06:38:23.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="服务挂掉汇总">
+<meta name="twitter:description" content="broken pipe事件一、2015-07-26
+1.事件：订单量突然达到1000+。2.异常：tomcat不断抛出broken pipe的异常。3.疑因：a) tomcat最大连接数b) tomcat超时设置c) java项目mysql最大连接池数太小d) mysql最大连接数太小e) 访问量开始增加f) 首页接口/订单列表接口等，回传json串太长(13151字符)4.处理：a) /mnt/">
+  
+    <link rel="alternative" href="/atom.xml" title="Mind Palace" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://7xo8zb.com1.z0.glb.clouddn.com/portrait.JPG">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xo8zb.com1.z0.glb.clouddn.com/portrait.JPG" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Chocolate Lee</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/aboutme">关于我</a></li>
+				        
+							<li><a href="http://www.jimaisong.com">即买即送 新鲜到家</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="weibo" target="_blank" href="http://weibo.com/3975749223/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/3DTouch/" style="font-size: 10px;">3DTouch</a> <a href="/tags/Blog/" style="font-size: 13.33px;">Blog</a> <a href="/tags/Hexo/" style="font-size: 13.33px;">Hexo</a> <a href="/tags/Java/" style="font-size: 13.33px;">Java</a> <a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/Maven/" style="font-size: 16.67px;">Maven</a> <a href="/tags/OC/" style="font-size: 13.33px;">OC</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/UIScrollView/" style="font-size: 10px;">UIScrollView</a> <a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a> <a href="/tags/extension/" style="font-size: 10px;">extension</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/git指令/" style="font-size: 10px;">git指令</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/iptables/" style="font-size: 10px;">iptables</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/pom/" style="font-size: 10px;">pom</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/宕机/" style="font-size: 10px;">宕机</a> <a href="/tags/报错/" style="font-size: 13.33px;">报错</a> <a href="/tags/服务器/" style="font-size: 16.67px;">服务器</a> <a href="/tags/测试/" style="font-size: 10px;">测试</a> <a href="/tags/病毒/" style="font-size: 13.33px;">病毒</a> <a href="/tags/线程锁/" style="font-size: 10px;">线程锁</a> <a href="/tags/绘图/" style="font-size: 13.33px;">绘图</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.jimaisong.com">即买即送 新鲜到家</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">Say something awful..as if fucking the world is your right.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Chocolate Lee</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://7xo8zb.com1.z0.glb.clouddn.com/portrait.JPG" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Chocolate Lee</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/aboutme">关于我</a></li>
+		        
+					<li><a href="http://www.jimaisong.com">即买即送 新鲜到家</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="weibo" target="_blank" href="http://weibo.com/3975749223/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-服务挂掉汇总" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/21/服务挂掉汇总/" class="article-date">
+  	<time datetime="2016-03-21T06:26:05.000Z" itemprop="datePublished">2016-03-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      服务挂掉汇总
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/宕机/">宕机</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/服务器/">服务器</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/运维之路/">运维之路</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="broken_pipe事件">broken pipe事件</h3><p>一、2015-07-26</p>
+<p>1.事件：订单量突然达到1000+。<br>2.异常：tomcat不断抛出broken pipe的异常。<br>3.疑因：<br>a) tomcat最大连接数<br>b) tomcat超时设置<br>c) java项目mysql最大连接池数太小<br>d) mysql最大连接数太小<br>e) 访问量开始增加<br>f) 首页接口/订单列表接口等，回传json串太长(13151字符)<br>4.处理：<br>a) /mnt/appserver/tomcat.7777/conf/server.xml中修改connector下最大连接数为500<br>b) /mnt/appserver/tomcat.7777/conf/server.xml中修改connector下超时设置为60s<br>c) vi /etc/sysctl.conf 中改了相应的配置 并 /sbin/sysctl -p使其生效<br>d) mysql最大连接数改为1000<br>e) java项目mysql最大连接池改为130<br>f) vi /etc/profile 增加 信号处理<br>5.结果：处理时长3小时，将java仙姑mysql最大连接池增大后，有明显好转，推测与数据库有关，但还是有异常出现，没能彻底解决。<br><a id="more"></a></p>
+<p>二、2015-07-29</p>
+<p>1.事件：提高并发量处理能力<br>2.处理：</p>
+<p>负载均衡，多服务器部署</p>
+<p>三、2015-08-02</p>
+<p>1.事件：提高并发量处理能力<br>2.异常：tomcat不断抛出broken pipe的异常。<br>3.疑因：<br>a).数据库接收调用数超出所能承受的数量<br>b).table_open_cache缓存数过小（64）<br>4.处理：<br>a).提高mysql最大连接数至3000。（show variables like ‘%max_connections%’;）<br>b).提高table_open_cache缓存数至2048。（show variables like ‘%table_open%’;）具体数值还需根据高峰期的open_tables和opened_tables进行设置（show global status like “open%_tables”;）<br>5.结果：处理时长20分钟，将table_open_cache数增大后有明显好转，可断定异常原因为mysql数据库，是否彻底解决待观察，仍需优化。</p>
+<p>四、2015-08-04</p>
+<p>1.异常：<br>a).tomcat不断抛出broken pipe的异常。<br>b).数据库aborted_connection持续增加。<br>c).数据库error_log报 sort aborted<br>d).数据库error_log报 max_allowed_packet值过小<br>2.疑因：<br>a).配送员查询单个未抢订单调用频繁，thread_cache_size过小。<br>3.处理：<br>a).thread_cache_size = 64。<br>b).停掉配送员查询单个未抢订单。<br>c).max_allow_packet = 32M<br>4.结果：处理时长2小时，停掉配送端轮循的SQL逻辑后没有再次发生，推测是排序过多而排序缓存太小导致连接断开，mysql参数需重新配置。</p>
+<h3 id="各服务无响应事件">各服务无响应事件</h3><p>一、2016-03-20 18:00</p>
+<p>1.异常：<br>a).各接口无响应。<br>b).nginx报upsteam的ip无响应。<br>c).tomcat服务无法启动。<br>2.疑因：<br>a).nginx异常。<br>b).war包异常。<br>3.处理：<br>a).检查nginx。<br>b).重新打包部署。<br>c).更换部署服务器。<br>4.结果：处理时长1小时，无好转，更换部署服务器后服务正常。继续寻找问题。</p>
+<p>二、2016-03-20 22：00<br>1.异常：<br>a).各接口无响应。<br>b).nginx报upsteam的ip无响应。<br>c).tomcat报错无法连接redis。<br>d).redis报错：Write error saving DB on disk: No space left on device<br>2.疑因：<br>a).磁盘空间不足。<br>3.处理：<br>a).查看磁盘空间。<br>4.结果：df -h 查看磁盘空间发现只有788K可用空间，删除部分历史数据库备份后，一切正常。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/02/29/iOS-UIBezierPath-绘图/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">iOS UIBezierPath 绘图</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="服务挂掉汇总" data-title="服务挂掉汇总" data-url="http://yoursite.com/2016/03/21/服务挂掉汇总/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Chocolate Lee
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

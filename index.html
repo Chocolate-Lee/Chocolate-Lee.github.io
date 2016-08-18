@@ -110,7 +110,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/3DTouch/" style="font-size: 10px;">3DTouch</a> <a href="/tags/Blog/" style="font-size: 13.33px;">Blog</a> <a href="/tags/Hexo/" style="font-size: 13.33px;">Hexo</a> <a href="/tags/Java/" style="font-size: 13.33px;">Java</a> <a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/Maven/" style="font-size: 16.67px;">Maven</a> <a href="/tags/OC/" style="font-size: 13.33px;">OC</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/iptables/" style="font-size: 10px;">iptables</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/pom/" style="font-size: 10px;">pom</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/服务器/" style="font-size: 13.33px;">服务器</a> <a href="/tags/测试/" style="font-size: 10px;">测试</a> <a href="/tags/病毒/" style="font-size: 13.33px;">病毒</a> <a href="/tags/线程锁/" style="font-size: 10px;">线程锁</a>
+						<a href="/tags/3DTouch/" style="font-size: 10px;">3DTouch</a> <a href="/tags/Blog/" style="font-size: 13.33px;">Blog</a> <a href="/tags/Hexo/" style="font-size: 13.33px;">Hexo</a> <a href="/tags/Java/" style="font-size: 13.33px;">Java</a> <a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/Maven/" style="font-size: 16.67px;">Maven</a> <a href="/tags/OC/" style="font-size: 13.33px;">OC</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/UIScrollView/" style="font-size: 10px;">UIScrollView</a> <a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a> <a href="/tags/extension/" style="font-size: 10px;">extension</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/git指令/" style="font-size: 10px;">git指令</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/iptables/" style="font-size: 10px;">iptables</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/pom/" style="font-size: 10px;">pom</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/宕机/" style="font-size: 10px;">宕机</a> <a href="/tags/报错/" style="font-size: 13.33px;">报错</a> <a href="/tags/服务器/" style="font-size: 16.67px;">服务器</a> <a href="/tags/测试/" style="font-size: 10px;">测试</a> <a href="/tags/病毒/" style="font-size: 13.33px;">病毒</a> <a href="/tags/线程锁/" style="font-size: 10px;">线程锁</a> <a href="/tags/绘图/" style="font-size: 13.33px;">绘图</a>
 					</div>
 				</section>
 				
@@ -177,6 +177,547 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-服务挂掉汇总" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/21/服务挂掉汇总/" class="article-date">
+  	<time datetime="2016-03-21T06:26:05.000Z" itemprop="datePublished">2016-03-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/21/服务挂掉汇总/">服务挂掉汇总</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="broken_pipe事件">broken pipe事件</h3><p>一、2015-07-26</p>
+<p>1.事件：订单量突然达到1000+。<br>2.异常：tomcat不断抛出broken pipe的异常。<br>3.疑因：<br>a) tomcat最大连接数<br>b) tomcat超时设置<br>c) java项目mysql最大连接池数太小<br>d) mysql最大连接数太小<br>e) 访问量开始增加<br>f) 首页接口/订单列表接口等，回传json串太长(13151字符)<br>4.处理：<br>a) /mnt/appserver/tomcat.7777/conf/server.xml中修改connector下最大连接数为500<br>b) /mnt/appserver/tomcat.7777/conf/server.xml中修改connector下超时设置为60s<br>c) vi /etc/sysctl.conf 中改了相应的配置 并 /sbin/sysctl -p使其生效<br>d) mysql最大连接数改为1000<br>e) java项目mysql最大连接池改为130<br>f) vi /etc/profile 增加 信号处理<br>5.结果：处理时长3小时，将java仙姑mysql最大连接池增大后，有明显好转，推测与数据库有关，但还是有异常出现，没能彻底解决。<br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/宕机/">宕机</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/服务器/">服务器</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/运维之路/">运维之路</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/03/21/服务挂掉汇总/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-iOS-UIBezierPath-绘图" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/29/iOS-UIBezierPath-绘图/" class="article-date">
+  	<time datetime="2016-02-29T08:31:41.000Z" itemprop="datePublished">2016-02-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/29/iOS-UIBezierPath-绘图/">iOS UIBezierPath 绘图</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一-根据点、半径画圆">一.根据点、半径画圆</h3><pre><code><span class="comment">// 圆圈</span>
+SEL colorSelector = <span class="built_in">NSSelectorFromString</span>(<span class="keyword">self</span><span class="variable">.stepModel</span><span class="variable">.color</span>);
+<span class="built_in">UIBezierPath</span> *backCircle = [<span class="built_in">UIBezierPath</span> bezierPathWithArcCenter:<span class="built_in">CGPointMake</span>(_radius+<span class="number">5</span> ,<span class="keyword">self</span><span class="variable">.bounds</span><span class="variable">.size</span><span class="variable">.height</span> / <span class="number">2</span>)
+                                                        radius:_radius
+                                                    startAngle:(<span class="built_in">CGFloat</span>) -M_PI_2
+                                                      endAngle:(<span class="built_in">CGFloat</span>)(<span class="number">1.5</span> * M_PI)
+                                                     clockwise:<span class="literal">YES</span>];
+
+<span class="built_in">UIColor</span> *pathColor = [<span class="built_in">UIColor</span> performSelector:colorSelector withObject:<span class="literal">nil</span>];
+[pathColor setStroke];
+backCircle<span class="variable">.lineWidth</span> = <span class="number">2</span>;
+[backCircle stroke];
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/绘图/">绘图</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/iOS/">iOS</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/02/29/iOS-UIBezierPath-绘图/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-iOS-CGContext-绘图" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/29/iOS-CGContext-绘图/" class="article-date">
+  	<time datetime="2016-02-29T08:29:08.000Z" itemprop="datePublished">2016-02-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/29/iOS-CGContext-绘图/">iOS CGContext 绘图</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在drawRect:(CGRect)rect方法中编写</p>
+<h3 id="一-画线/直线图形">一.画线/直线图形</h3><pre><code><span class="built_in">UIColor</span> *pathColor = [<span class="built_in">UIColor</span> performSelector:colorSelector withObject:<span class="literal">nil</span>];
+<span class="built_in">CGFloat</span> r, g, b, a;
+[pathColor getRed:&amp;r green:&amp;g blue:&amp;b alpha:&amp;a];
+
+<span class="comment">// 取得画布</span>
+<span class="built_in">CGContextRef</span> context = <span class="built_in">UIGraphicsGetCurrentContext</span>();
+<span class="built_in">CGContextSetLineCap</span>(context, k<span class="built_in">CGLineCapSquare</span>); <span class="comment">// 设置终点类型</span>
+<span class="built_in">CGContextSetRGBStrokeColor</span>(context, r, g, b, a); <span class="comment">// 设置画笔颜色</span>
+<span class="built_in">CGContextBeginPath</span>(context); <span class="comment">// 开始绘画</span>
+<span class="built_in">CGContextMoveToPoint</span>(context, leftPoint<span class="variable">.x</span>, leftPoint<span class="variable">.y</span>); <span class="comment">// 设置点位置</span>
+<span class="built_in">CGContextAddLineToPoint</span>(context, upPoint<span class="variable">.x</span>, upPoint<span class="variable">.y</span>); <span class="comment">// 连线</span>
+
+<span class="built_in">CGContextStrokePath</span>(context); <span class="comment">// 绘线</span>
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/绘图/">绘图</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/iOS/">iOS</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/02/29/iOS-CGContext-绘图/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-maven报错汇总" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/19/maven报错汇总/" class="article-date">
+  	<time datetime="2016-02-19T10:04:28.000Z" itemprop="datePublished">2016-02-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/19/maven报错汇总/">maven报错汇总</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、mvn_package时，提示找不到一些包">一、mvn package时，提示找不到一些包</h3><p>1.问题：pom中的依赖，如果scop为runtime，会出现这样的报错。</p>
+<p>2.解决方案：将scop的值改为compile</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/报错/">报错</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/maven/">maven</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/02/19/maven报错汇总/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-tomcat报错汇总" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/19/tomcat报错汇总/" class="article-date">
+  	<time datetime="2016-02-19T09:41:14.000Z" itemprop="datePublished">2016-02-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/19/tomcat报错汇总/">tomcat报错汇总</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、内存不足">一、内存不足</h3><p>1.问题：当设置的内存空间超出硬件剩余内存时，将无法启动，执行startup.sh后，查看日志，会有如下的提示</p>
+<blockquote>
+<p># There is insufficient memory for the Java Runtime Environment to continue.<br># Native memory allocation (malloc) failed to allocate 357892096 bytes for committing reserved memory.<br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/报错/">报错</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Tomcat/">Tomcat</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/02/19/tomcat报错汇总/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-iOS-UIScrollView实现两指缩放功能" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/28/iOS-UIScrollView实现两指缩放功能/" class="article-date">
+  	<time datetime="2016-01-28T07:29:01.000Z" itemprop="datePublished">2016-01-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/28/iOS-UIScrollView实现两指缩放功能/">iOS UIScrollView实现两指缩放功能</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、第一种方法">一、第一种方法</h3><p>1.创建一个UIScrollView实例。</p>
+<p>2.设置UIScrollView实例的属性。</p>
+<pre><code><span class="component">- (void)configScrollView {
+
+  scrollview<span class="string">.scrollEnabled</span> = YES;
+  scrollview<span class="string">.delegate</span> = self;
+  scrollview<span class="string">.minimumZoomScale</span> = 1<span class="string">.f</span>;    // 最小缩放
+  scrollview<span class="string">.maximumZoomScale</span> = 2<span class="string">.f</span>;    // 最大缩放
+  [scrollView setZoomScale:scrollView<span class="string">.minimumZoomScale]</span>;    // 初始时候的缩放值
+}</span>
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UIScrollView/">UIScrollView</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/iOS/">iOS</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/01/28/iOS-UIScrollView实现两指缩放功能/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-phpize安装php扩展" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/29/phpize安装php扩展/" class="article-date">
+  	<time datetime="2015-12-29T06:30:23.000Z" itemprop="datePublished">2015-12-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/29/phpize安装php扩展/">phpize安装php扩展</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>安装各扩展，需要进入php源码目录。安装完成后，重启apache，执行</p>
+<pre><code><span class="regexp">/usr/</span>local<span class="regexp">/php/</span>bin<span class="regexp">/php -m</span>
+</code></pre><p>可以查看扩展是否安装成功。<br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/extension/">extension</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/运维之路/">运维之路</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/12/29/phpize安装php扩展/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-git指令" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/01/git指令/" class="article-date">
+  	<time datetime="2015-12-01T01:25:51.000Z" itemprop="datePublished">2015-12-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/01/git指令/">git指令</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、tag">一、tag</h3><p>1.设置并上传tag</p>
+<pre><code>git tag -<span class="operator">a</span> <span class="string">'tag...'</span> -m <span class="string">'description...'</span>
+git push <span class="comment">--tags</span>
+</code></pre><p>2.导出指定tag文件<br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git指令/">git指令</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/git/">git</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/12/01/git指令/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-在未越狱的手机上安装未上线的ipa包" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -304,507 +845,9 @@
 
 
   
-    <article id="post-服务器被植入后门程序（二）" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/11/25/服务器被植入后门程序（二）/" class="article-date">
-  	<time datetime="2015-11-25T01:30:16.000Z" itemprop="datePublished">2015-11-25</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/25/服务器被植入后门程序（二）/">服务器被植入后门程序（二）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>继上次阻止udp发包后，出网流量得到了控制。但是由于没能找到恶意文件，于昨天又出现了问题，早上开始入网流量异常，严重不符合业务正常的状况。</p>
-<h3 id="思路一、使用iftop查看带宽占用情况">思路一、使用iftop查看带宽占用情况</h3><p>1.安装iftop</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install iftop</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/服务器/">服务器</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/病毒/">病毒</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/运维之路/">运维之路</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/11/25/服务器被植入后门程序（二）/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-服务器被植入后门程序" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/11/19/服务器被植入后门程序/" class="article-date">
-  	<time datetime="2015-11-19T05:22:17.000Z" itemprop="datePublished">2015-11-19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/19/服务器被植入后门程序/">服务器被植入后门程序（一）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>  近期发现一台服务器出网流量频繁出现高峰，一直接近甚至超出带宽。因为正赶上公司的网站、服务号等都部署在这台服务器上，起初怀疑是由于图片过多导致的。</p>
-<p>  近两天阿里云盾多次检测出一台服务器出现恶意发包，攻击其它服务器的行为，多次查找并未发现异常进程，阿里的安全支持也没有发现，只是建议提示时抓包排查。（果然不买他们的云托管服务还是别想他们能帮忙的）</p>
-<p>  看着自己的服务器成为了别人的傀儡，还占用着带宽，只能自己想办法了。</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/服务器/">服务器</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/病毒/">病毒</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/运维之路/">运维之路</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/11/19/服务器被植入后门程序/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-hexo博客部署到github" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/11/12/hexo博客部署到github/" class="article-date">
-  	<time datetime="2015-11-12T01:26:39.000Z" itemprop="datePublished">2015-11-12</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/12/hexo博客部署到github/">hexo博客部署到github</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="一、搭建一个hexo博客">一、搭建一个hexo博客</h3><p><a href="http://lc.chaoxiaohuihui.com/2015/08/19/hexo-%E6%95%99%E7%A8%8B/">可按本站内教程进行搭建</a></p>
-<h3 id="二、在github上创建仓库">二、在github上创建仓库</h3><p>首先注册一个github账号，注册时填写的username要谨慎</p>
-<p>1.创建一个Repository，名称规则为：<br>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blog/">Blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/Hexo/">Hexo</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/11/12/hexo博客部署到github/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-3D-Touch开发" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/11/11/3D-Touch开发/" class="article-date">
-  	<time datetime="2015-11-11T09:29:27.000Z" itemprop="datePublished">2015-11-11</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/11/3D-Touch开发/">3D Touch开发</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="一、Home_Screen_Quick_Actions">一、Home Screen Quick Actions</h3><p>第一，你得有个6s手机！<br>如果没有，也可以！。<br><a href="https://github.com/DeskConnect/SBShortcutMenuSimulator">根据此链接教程，在模拟器上开发</a></p>
-<p>1.添加静态标签：在info.plist中添加数组字段：UIApplicationShortcutItems。（其中每个item都是一个标签，将item设置为字典属性。）</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/3DTouch/">3DTouch</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/iOS/">iOS</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/11/11/3D-Touch开发/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-Servlet" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/11/09/Servlet/" class="article-date">
-  	<time datetime="2015-11-08T16:00:37.000Z" itemprop="datePublished">2015-11-09</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/09/Servlet/">Servlet</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="一、创建Web项目">一、创建Web项目</h3><p>1.打开eclipse，新建一个Dynamic Web project<br>2.新建一个tomcat服务器</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/Java/">Java</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/11/09/Servlet/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-iOS报错汇总" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/10/19/iOS报错汇总/" class="article-date">
-  	<time datetime="2015-10-19T09:55:15.000Z" itemprop="datePublished">2015-10-19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/19/iOS报错汇总/">iOS报错汇总</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-提示关于bitcode的报错">1.提示关于bitcode的报错</h3><p>bitcode在Xcode7以上显示并默认开启，需要在Build Setting中将<strong>Enable bitcode</strong>关闭,或设置编译标识ENABLE_BITCODE=NO</p>
-<h3 id="2-上传包提交审核时，提示CFBundleExecutable_key类的错误">2.上传包提交审核时，提示CFBundleExecutable key类的错误</h3><p>全局搜索info.plist，删除第三方bundle的info.plist文件内Executable file这一项即可。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/iOS/">iOS</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-iOS-9-微信、支付宝等跳转问题" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/10/19/iOS-9-微信、支付宝等跳转问题/" class="article-date">
-  	<time datetime="2015-10-19T09:50:15.000Z" itemprop="datePublished">2015-10-19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/19/iOS-9-微信、支付宝等跳转问题/">iOS 9 微信、支付宝等跳转问题</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.在Info.plist中增加LSApplicationQueriesSchemes数组</p>
-<p>2.在LSApplicationQueriesSchemes数组中增加NSString字段，内容为要跳转的应用的URL Scheme。例如：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">key</span>&gt;</span>LSApplicationQueriesSchemes<span class="tag">&lt;/<span class="title">key</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">array</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 微信 URL Scheme 白名单--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">string</span>&gt;</span>wechat<span class="tag">&lt;/<span class="title">string</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">string</span>&gt;</span>weixin<span class="tag">&lt;/<span class="title">string</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">array</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/iOS/">iOS</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-iOS-9-无法加载图片的问题" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/10/19/iOS-9-无法加载图片的问题/" class="article-date">
-  	<time datetime="2015-10-19T09:42:06.000Z" itemprop="datePublished">2015-10-19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/19/iOS-9-无法加载图片的问题/">iOS 9 无法加载图片的问题</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.在Info.plist中添加NSAppTransportSecurity类型Dictionary。</p>
-<p>2.在NSAppTransportSecurity下添加NSAllowsArbitraryLoads类型Boolean,值设为YES。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/iOS/">iOS</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 </div>
@@ -812,7 +855,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2015 Chocolate Lee
+    		&copy; 2016 Chocolate Lee
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

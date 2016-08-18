@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>phpize安装php扩展 | Mind Palace</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="安装各扩展，需要进入php源码目录。安装完成后，重启apache，执行
+/usr/local/php/bin/php -m
+可以查看扩展是否安装成功。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="phpize安装php扩展">
+<meta property="og:url" content="http://yoursite.com/2015/12/29/phpize安装php扩展/index.html">
+<meta property="og:site_name" content="Mind Palace">
+<meta property="og:description" content="安装各扩展，需要进入php源码目录。安装完成后，重启apache，执行
+/usr/local/php/bin/php -m
+可以查看扩展是否安装成功。">
+<meta property="og:updated_time" content="2016-05-25T03:23:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="phpize安装php扩展">
+<meta name="twitter:description" content="安装各扩展，需要进入php源码目录。安装完成后，重启apache，执行
+/usr/local/php/bin/php -m
+可以查看扩展是否安装成功。">
+  
+    <link rel="alternative" href="/atom.xml" title="Mind Palace" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://7xo8zb.com1.z0.glb.clouddn.com/portrait.JPG">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xo8zb.com1.z0.glb.clouddn.com/portrait.JPG" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Chocolate Lee</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/aboutme">关于我</a></li>
+				        
+							<li><a href="http://www.jimaisong.com">即买即送 新鲜到家</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="weibo" target="_blank" href="http://weibo.com/3975749223/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/3DTouch/" style="font-size: 10px;">3DTouch</a> <a href="/tags/Blog/" style="font-size: 13.33px;">Blog</a> <a href="/tags/Hexo/" style="font-size: 13.33px;">Hexo</a> <a href="/tags/Java/" style="font-size: 13.33px;">Java</a> <a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/Maven/" style="font-size: 16.67px;">Maven</a> <a href="/tags/OC/" style="font-size: 13.33px;">OC</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/UIScrollView/" style="font-size: 10px;">UIScrollView</a> <a href="/tags/eclipse/" style="font-size: 10px;">eclipse</a> <a href="/tags/extension/" style="font-size: 10px;">extension</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/git指令/" style="font-size: 10px;">git指令</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/iptables/" style="font-size: 10px;">iptables</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/pom/" style="font-size: 10px;">pom</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/宕机/" style="font-size: 10px;">宕机</a> <a href="/tags/报错/" style="font-size: 13.33px;">报错</a> <a href="/tags/服务器/" style="font-size: 16.67px;">服务器</a> <a href="/tags/测试/" style="font-size: 10px;">测试</a> <a href="/tags/病毒/" style="font-size: 13.33px;">病毒</a> <a href="/tags/线程锁/" style="font-size: 10px;">线程锁</a> <a href="/tags/绘图/" style="font-size: 13.33px;">绘图</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.jimaisong.com">即买即送 新鲜到家</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">Say something awful..as if fucking the world is your right.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Chocolate Lee</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://7xo8zb.com1.z0.glb.clouddn.com/portrait.JPG" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Chocolate Lee</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/aboutme">关于我</a></li>
+		        
+					<li><a href="http://www.jimaisong.com">即买即送 新鲜到家</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="weibo" target="_blank" href="http://weibo.com/3975749223/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-phpize安装php扩展" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/29/phpize安装php扩展/" class="article-date">
+  	<time datetime="2015-12-29T06:30:23.000Z" itemprop="datePublished">2015-12-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      phpize安装php扩展
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/extension/">extension</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/运维之路/">运维之路</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>安装各扩展，需要进入php源码目录。安装完成后，重启apache，执行</p>
+<pre><code><span class="regexp">/usr/</span>local<span class="regexp">/php/</span>bin<span class="regexp">/php -m</span>
+</code></pre><p>可以查看扩展是否安装成功。<br><a id="more"></a></p>
+<h3 id="一、GD扩展">一、GD扩展</h3><p>1.进入gd目录下</p>
+<pre><code>cd <span class="regexp">/usr/</span>local<span class="regexp">/src/</span>php-<span class="number">5.4</span>.<span class="number">13</span><span class="regexp">/ext/g</span>d
+</code></pre><p>2.安装扩展</p>
+<pre><code>yum <span class="keyword">install</span> php-gd2  png jpeg freetype
+yum -y <span class="keyword">install</span> libjpeg-devel
+yum <span class="keyword">install</span> libpng-devel
+yum <span class="keyword">install</span> freetype-devel
+</code></pre><p>3.执行phpize</p>
+<pre><code><span class="regexp">/usr/</span>local<span class="regexp">/php/</span>bin<span class="regexp">/phpize</span>
+</code></pre><p>4.生成编译文件</p>
+<pre><code>./configure --<span class="keyword">with</span>-php-config=/usr/<span class="keyword">local</span>/php/bin/php-config --<span class="keyword">with</span>-png-dir --<span class="keyword">with</span>-freetype-dir --<span class="keyword">with</span>-jpeg-dir --<span class="keyword">with</span>-gd
+</code></pre><p>5.编译，安装</p>
+<pre><code><span class="built_in">make</span>
+<span class="built_in">make</span> install
+</code></pre><p>6.修改php.ini</p>
+<pre><code><span class="attribute">extension</span>=<span class="string">gd.so</span>
+</code></pre><h3 id="二、mysql扩展">二、mysql扩展</h3><p>1.进入mysql目录</p>
+<pre><code>cd <span class="regexp">/usr/</span>local<span class="regexp">/src/</span>php-<span class="number">5.4</span>.<span class="number">13</span><span class="regexp">/ext/my</span>sql
+</code></pre><p>2.安装扩展</p>
+<pre><code>yum <span class="keyword">install</span> autoconf
+</code></pre><p>3.执行phpize</p>
+<pre><code><span class="regexp">/usr/</span>local<span class="regexp">/php/</span>bin<span class="regexp">/phpize</span>
+</code></pre><p>4.生成编译文件</p>
+<pre><code>./configure --<span class="keyword">with</span>-php-config=/usr/<span class="keyword">local</span>/php/bin/php-config --<span class="keyword">with</span>-mysql=/usr/<span class="keyword">local</span>/mysql/ --<span class="keyword">with</span>-zlib-dir=/usr/<span class="keyword">local</span>/lib
+</code></pre><p>5.编译，安装</p>
+<pre><code><span class="built_in">make</span>
+<span class="built_in">make</span> install
+</code></pre><p>6.修改php.ini</p>
+<pre><code><span class="attribute">extension</span>=<span class="string">mysql.so</span>
+</code></pre><h3 id="三、curl扩展">三、curl扩展</h3><p>1.进入curl目录</p>
+<pre><code>cd <span class="regexp">/usr/</span>local<span class="regexp">/src/</span>php-<span class="number">5.4</span>.<span class="number">13</span><span class="regexp">/ext/</span>curl
+</code></pre><p>2.执行phpize</p>
+<pre><code><span class="regexp">/usr/</span>local<span class="regexp">/php/</span>bin<span class="regexp">/phpize</span>
+</code></pre><p>3.生成编译文件</p>
+<pre><code>./configure --<span class="keyword">with</span>-php-config=/usr/<span class="keyword">local</span>/php/bin/php-config --<span class="keyword">with</span>-curl=DIR
+</code></pre><p>4.编译，安装</p>
+<pre><code><span class="built_in">make</span>
+<span class="built_in">make</span> install
+</code></pre><p>5.修改php.ini</p>
+<pre><code><span class="attribute">extension</span>=<span class="string">curl.so</span>
+</code></pre><blockquote>
+<p>如果在执行configure过程中报如下的错误：<br>configure: error: Please reinstall the libcurl distribution -<br>easy.h should be in <curl-dir>/include/curl/<br>那么需要先安装依赖包。<br># RetHat CentOS or Fedora 使用下面安装命令：<br>yum install curl curl-deve<br>如果还不行，执行<br>yum -y install curl-devel</curl-dir></p>
+</blockquote>
+<h3 id="三、mongo扩展">三、mongo扩展</h3><p>1.下载php的mongodb扩展</p>
+<pre><code>wget <span class="string">http:</span><span class="comment">//pecl.php.net/get/mongo-1.6.14.tgz</span>
+</code></pre><p>2.解压，并进入目录</p>
+<pre><code><span class="tag">tar</span> <span class="tag">-zxvf</span> <span class="tag">mongo-1</span><span class="class">.6</span><span class="class">.14</span><span class="class">.tgz</span>
+<span class="tag">cd</span> <span class="tag">mongo-1</span><span class="class">.6</span><span class="class">.14</span>
+</code></pre><p>3.运行phpize</p>
+<pre><code><span class="regexp">/usr/</span>local<span class="regexp">/php/</span>bin<span class="regexp">/phpize</span>
+</code></pre><p>4.编译安装</p>
+<pre><code>.<span class="regexp">/configure --with-php-config=/u</span>sr<span class="regexp">/local/</span>php<span class="regexp">/bin/</span>php-config
+make &amp;&amp; make install
+</code></pre><p>5.编辑php.ini</p>
+<pre><code><span class="attribute">extension</span>=<span class="string">mongo.so</span>
+</code></pre><p>6.重启服务器</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/01/28/iOS-UIScrollView实现两指缩放功能/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          iOS UIScrollView实现两指缩放功能
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/12/01/git指令/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">git指令</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="phpize安装php扩展" data-title="phpize安装php扩展" data-url="http://yoursite.com/2015/12/29/phpize安装php扩展/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Chocolate Lee
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
