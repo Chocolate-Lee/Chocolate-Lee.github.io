@@ -3,27 +3,36 @@
 <head>
   <meta charset="utf-8">
   
-  <title>iOS CGContext 绘图 | Mind Palace</title>
+  <title>关于Cocoapods导入YSASIHTTPRequest报错 | Mind Palace</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在drawRect:(CGRect)rect方法中编写
-一.画线/直线图形UIColor *pathColor = [UIColor performSelector:colorSelector withObject:nil];
-CGFloat r, g, b, a;
-[pathColor getRed:&amp;amp;r green:&amp;amp;g blue:&amp;amp;b alpha:&amp;amp;a];">
+  <meta name="description" content="如果使用pod导入YSASIHTTPRequest出现类似无权访问，找不到的报错。因为YSASIHTTPRequest的后期更新地址更换了。
+1.进到文件夹 ~/.cocoapods/repos/master/Specs/YSASIHTTPRequest/
+2.进入对应版本文件夹下
+3.编辑YSASIHTTPRequest.podspec.json文件
+4.找到如下内容
+
+……“source”:">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS CGContext 绘图">
-<meta property="og:url" content="http://yoursite.com/2016/02/29/iOS-CGContext-绘图/index.html">
+<meta property="og:title" content="关于Cocoapods导入YSASIHTTPRequest报错">
+<meta property="og:url" content="http://yoursite.com/2016/08/19/关于Cocoapods导入YSASIHTTPRequest报错/index.html">
 <meta property="og:site_name" content="Mind Palace">
-<meta property="og:description" content="在drawRect:(CGRect)rect方法中编写
-一.画线/直线图形UIColor *pathColor = [UIColor performSelector:colorSelector withObject:nil];
-CGFloat r, g, b, a;
-[pathColor getRed:&amp;amp;r green:&amp;amp;g blue:&amp;amp;b alpha:&amp;amp;a];">
-<meta property="og:updated_time" content="2016-02-29T08:36:27.000Z">
+<meta property="og:description" content="如果使用pod导入YSASIHTTPRequest出现类似无权访问，找不到的报错。因为YSASIHTTPRequest的后期更新地址更换了。
+1.进到文件夹 ~/.cocoapods/repos/master/Specs/YSASIHTTPRequest/
+2.进入对应版本文件夹下
+3.编辑YSASIHTTPRequest.podspec.json文件
+4.找到如下内容
+
+……“source”:">
+<meta property="og:updated_time" content="2016-08-19T01:42:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS CGContext 绘图">
-<meta name="twitter:description" content="在drawRect:(CGRect)rect方法中编写
-一.画线/直线图形UIColor *pathColor = [UIColor performSelector:colorSelector withObject:nil];
-CGFloat r, g, b, a;
-[pathColor getRed:&amp;amp;r green:&amp;amp;g blue:&amp;amp;b alpha:&amp;amp;a];">
+<meta name="twitter:title" content="关于Cocoapods导入YSASIHTTPRequest报错">
+<meta name="twitter:description" content="如果使用pod导入YSASIHTTPRequest出现类似无权访问，找不到的报错。因为YSASIHTTPRequest的后期更新地址更换了。
+1.进到文件夹 ~/.cocoapods/repos/master/Specs/YSASIHTTPRequest/
+2.进入对应版本文件夹下
+3.编辑YSASIHTTPRequest.podspec.json文件
+4.找到如下内容
+
+……“source”:">
   
     <link rel="alternative" href="/atom.xml" title="Mind Palace" type="application/atom+xml">
   
@@ -167,11 +176,11 @@ CGFloat r, g, b, a;
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-iOS-CGContext-绘图" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-关于Cocoapods导入YSASIHTTPRequest报错" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/02/29/iOS-CGContext-绘图/" class="article-date">
-  	<time datetime="2016-02-29T08:29:08.000Z" itemprop="datePublished">2016-02-29</time>
+      <a href="/2016/08/19/关于Cocoapods导入YSASIHTTPRequest报错/" class="article-date">
+  	<time datetime="2016-08-19T01:35:20.000Z" itemprop="datePublished">2016-08-19</time>
 </a>
     </div>
   
@@ -184,7 +193,7 @@ CGFloat r, g, b, a;
         
   
     <h1 class="article-title" itemprop="name">
-      iOS CGContext 绘图
+      关于Cocoapods导入YSASIHTTPRequest报错
     </h1>
   
 
@@ -193,12 +202,12 @@ CGFloat r, g, b, a;
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/绘图/">绘图</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cocoapods/">Cocoapods</a></li></ul>
 	</div>
 
         
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/iOS/">iOS</a>
+	<a class="article-category-link" href="/categories/Cocoapods/">Cocoapods</a>
 	</div>
 
 
@@ -208,25 +217,20 @@ CGFloat r, g, b, a;
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在drawRect:(CGRect)rect方法中编写</p>
-<h3 id="一-画线/直线图形">一.画线/直线图形</h3><pre><code><span class="built_in">UIColor</span> *pathColor = [<span class="built_in">UIColor</span> performSelector:colorSelector withObject:<span class="literal">nil</span>];
-<span class="built_in">CGFloat</span> r, g, b, a;
-[pathColor getRed:&amp;r green:&amp;g blue:&amp;b alpha:&amp;a];
+        <p>如果使用pod导入YSASIHTTPRequest出现类似无权访问，找不到的报错。因为YSASIHTTPRequest的后期更新地址更换了。</p>
+<p>1.进到文件夹 ~/.cocoapods/repos/master/Specs/YSASIHTTPRequest/</p>
+<p>2.进入对应版本文件夹下</p>
+<p>3.编辑YSASIHTTPRequest.podspec.json文件</p>
+<p>4.找到如下内容</p>
+<blockquote>
+<p>……<br>“source”: {<br>   “git”: “git@github.com:youngshook/asi-http-request.git”,<br>   “tag”: “2.0.1”<br> }<br>……</p>
+</blockquote>
+<p>将其中 </p>
+<blockquote>
+<p>“git”: “git@github.com:youngshook/asi-http-request.git”<br>改为：<br>“git”: “<a href="https://github.com/youngshook/asi-http-request.git" target="_blank" rel="external">https://github.com/youngshook/asi-http-request.git</a>“</p>
+</blockquote>
+<p>5.重新使用pod导入即可。</p>
 
-<span class="comment">// 取得画布</span>
-<span class="built_in">CGContextRef</span> context = <span class="built_in">UIGraphicsGetCurrentContext</span>();
-<span class="built_in">CGContextSetLineCap</span>(context, k<span class="built_in">CGLineCapSquare</span>); <span class="comment">// 设置终点类型</span>
-<span class="built_in">CGContextSetRGBStrokeColor</span>(context, r, g, b, a); <span class="comment">// 设置画笔颜色</span>
-<span class="built_in">CGContextBeginPath</span>(context); <span class="comment">// 开始绘画</span>
-<span class="built_in">CGContextMoveToPoint</span>(context, leftPoint<span class="variable">.x</span>, leftPoint<span class="variable">.y</span>); <span class="comment">// 设置点位置</span>
-<span class="built_in">CGContextAddLineToPoint</span>(context, upPoint<span class="variable">.x</span>, upPoint<span class="variable">.y</span>); <span class="comment">// 连线</span>
-
-<span class="built_in">CGContextStrokePath</span>(context); <span class="comment">// 绘线</span>
-</code></pre><a id="more"></a>
-<h3 id="二-画带有填充色的图形">二.画带有填充色的图形</h3><pre><code><span class="comment">// 在CGContextBeginPath后编写填充颜色代码</span>
-<span class="built_in">CGContextSetFillColorWithColor</span>(context, [<span class="built_in">UIColor</span> whiteColor]<span class="variable">.CGColor</span>);
-<span class="built_in">CGContextDrawPath</span>(context, k<span class="built_in">CGPathFillStroke</span>);
-</code></pre>
       
     </div>
     
@@ -235,18 +239,9 @@ CGFloat r, g, b, a;
     
 <nav id="article-nav">
   
-    <a href="/2016/02/29/iOS-UIBezierPath-绘图/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          iOS UIBezierPath 绘图
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/02/19/maven报错汇总/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">maven报错汇总</div>
+    <a href="/2016/08/18/iOS使用Cocopods管理三方库/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">iOS使用Cocopods管理三方库</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -275,7 +270,7 @@ CGFloat r, g, b, a;
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="iOS-CGContext-绘图" data-title="iOS CGContext 绘图" data-url="http://yoursite.com/2016/02/29/iOS-CGContext-绘图/"></div>
+	<div class="ds-thread" data-thread-key="关于Cocoapods导入YSASIHTTPRequest报错" data-title="关于Cocoapods导入YSASIHTTPRequest报错" data-url="http://yoursite.com/2016/08/19/关于Cocoapods导入YSASIHTTPRequest报错/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
